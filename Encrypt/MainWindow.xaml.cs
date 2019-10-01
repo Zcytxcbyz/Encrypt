@@ -40,6 +40,7 @@ namespace Encrypt
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            this.Title = Properties.Resources.TitleLabelText;
             TitleLabel.Content = Properties.Resources.TitleLabelText;
             KeyLabel.Content = Properties.Resources.KeyLabelText;
             EncryptButton.Content = Properties.Resources.EncryptButtonText;
