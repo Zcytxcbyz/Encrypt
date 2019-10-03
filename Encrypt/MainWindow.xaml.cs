@@ -109,6 +109,7 @@ namespace Encrypt
             binaryWriter.Write(this.Left);
             binaryWriter.Close();
             fileStream.Close();
+            this.ShowInTaskbar = false;
             BeginStoryboard(FormCloseStory);      
         }
 
