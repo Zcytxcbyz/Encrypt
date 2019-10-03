@@ -227,6 +227,34 @@
         </Style>
     </Window.Resources>
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="FormLoading">
+                    <Storyboard x:Name="FormLoadStory">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="window">
+                            <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                            <EasingColorKeyFrame KeyTime="0:0:1" Value="White"/>
+                        </ColorAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="window">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="1"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+                <VisualState x:Name="FormClosing">
+                    <Storyboard x:Name="FormCloseStory" Completed="FormCloseStory_Completed">
+                        <ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="window">
+                            <EasingColorKeyFrame KeyTime="0" Value="White"/>
+                            <EasingColorKeyFrame KeyTime="0:0:1" Value="White"/>
+                        </ColorAnimationUsingKeyFrames>
+                        <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="window">
+                            <EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+                            <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+                        </DoubleAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
         <Rectangle Stroke="#7F000000"/>
         <Button x:Name="CloseButton" HorizontalAlignment="Left" Margin="175,10,0,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource CloseButtonStyle}" Click="CloseButton_Click"/>
         <Button x:Name="MinButton" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource MinButtonStyle}" Click="MinButton_Click"/>

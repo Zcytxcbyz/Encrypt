@@ -40,6 +40,7 @@ namespace Encrypt
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            BeginStoryboard(FormLoadStory);
             this.Title = Properties.Resources.TitleLabelText;
             TitleLabel.Content = Properties.Resources.TitleLabelText;
             KeyLabel.Content = Properties.Resources.KeyLabelText;
@@ -101,12 +102,18 @@ namespace Encrypt
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            e.Cancel = true;
             FileStream fileStream = new FileStream(SettingFilePath, FileMode.Create, FileAccess.Write);
             BinaryWriter binaryWriter = new BinaryWriter(fileStream);
             binaryWriter.Write(this.Top);
             binaryWriter.Write(this.Left);
             binaryWriter.Close();
             fileStream.Close();
+            BeginStoryboard(FormCloseStory);      
+        }
+
+        private void FormCloseStory_Completed(object sender, EventArgs e)
+        {
             Environment.Exit(0);
         }
     }
