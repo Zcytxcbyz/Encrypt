@@ -17,7 +17,7 @@ namespace Encrypt
             Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\"
             + Path.GetFileNameWithoutExtension(System.Windows.Forms.Application.ExecutablePath)
             + ".dat";
-
+        public bool storylock = false;
         public MainWindow()
         {
                 InitializeComponent();
@@ -115,6 +115,38 @@ namespace Encrypt
         private void FormCloseStory_Completed(object sender, EventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Window_StateChanged(object sender, EventArgs e)
+        {
+            if (!storylock)
+            {
+                if (this.WindowState == WindowState.Normal)
+                {
+                    storylock = true;
+                    this.WindowState = WindowState.Normal;
+                    BeginStoryboard(FormNorStory);
+
+                }
+                else if (this.WindowState == WindowState.Minimized)
+                {
+                    storylock = true;
+                    this.WindowState = WindowState.Normal;
+                    BeginStoryboard(FormMinStory);
+                }
+            }
+        }
+
+        private void FormMinStory_Completed(object sender, EventArgs e)
+        {
+            this.WindowState = WindowState.Minimized;
+            storylock = false;
+        }
+
+        private void FormNorStory_Completed(object sender, EventArgs e)
+        {
+            this.WindowState = WindowState.Normal;
+            storylock = false;
         }
     }
 }
