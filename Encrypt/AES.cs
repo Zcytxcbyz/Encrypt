@@ -8,7 +8,8 @@ namespace AESCrypto
 {
     class AES
     {
-        public static string ErrInfo;
+        //public static string ErrInfo;
+        public static Exception ErrInfo { get; set; }
         /// <summary>
         /// AES加密
         /// </summary>
@@ -58,7 +59,7 @@ namespace AESCrypto
             catch (Exception e)
             {
                 //MessageBox.Show(e.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ErrInfo = e.Message;
+                ErrInfo = e;
                 return null;
             }
         }
@@ -117,7 +118,7 @@ namespace AESCrypto
             catch (Exception e)
             {
                 //MessageBox.Show(e.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ErrInfo = e.Message;
+                ErrInfo = e;
                 return null;
             }
         }
@@ -164,7 +165,7 @@ namespace AESCrypto
             catch (Exception e)
             {
                 //MessageBox.Show(e.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ErrInfo = e.Message;
+                ErrInfo = e;
                 return null;
             }
         }
@@ -212,7 +213,7 @@ namespace AESCrypto
             catch (Exception e)
             {
                 //MessageBox.Show(e.Message,"错误",MessageBoxButtons.OK,MessageBoxIcon.Error);
-                ErrInfo = e.Message;
+                ErrInfo = e;
                 return null;
             }
         }

@@ -123,8 +123,14 @@
   <data name="DecryptButtonText" xml:space="preserve">
     <value>解密</value>
   </data>
+  <data name="DecryptedFailed" xml:space="preserve">
+    <value>解密失败</value>
+  </data>
   <data name="EncryptButtonText" xml:space="preserve">
     <value>加密</value>
+  </data>
+  <data name="EncryptedFailed" xml:space="preserve">
+    <value>加密失败</value>
   </data>
   <data name="KeyLabelText" xml:space="preserve">
     <value>密钥</value>

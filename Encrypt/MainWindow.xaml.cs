@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 
 namespace Encrypt
 {
@@ -57,35 +56,43 @@ namespace Encrypt
                 binaryReader.Close();
                 fileStream.Close();
             }
+            ErrorInfo.Text = "";
         }
 
         private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
+            ErrorInfo.Text = "";
             string str = GetText(MainTextBox);
             string key = KeyTextBox.Text;
             string result = AESCrypto.AES.AESEncrypt(str, key);
             if (result != null)
             {
-                LoadText(MainTextBox, result, Brushes.Black);
+                LoadText(MainTextBox, result);
             }
             else
             {
-                LoadText(MainTextBox, AESCrypto.AES.ErrInfo, Brushes.Red);
+                //LoadText(MainTextBox, AESCrypto.AES.ErrInfo.Message, Brushes.Red);
+                MainTextBox.Document.Blocks.Clear();
+                ErrorInfo.Text = Properties.Resources.EncryptedFailed;
             }
         }
 
         private void DecryptButton_Click(object sender, RoutedEventArgs e)
         {
+            ErrorInfo.Text = "";
             string str = GetText(MainTextBox);
             string key = KeyTextBox.Text;
             string result = AESCrypto.AES.AESDecrypt(str, key);
             if (result != null)
             {
-                LoadText(MainTextBox, result, Brushes.Black);
+                LoadText(MainTextBox, result);
             }
             else
             {
-                LoadText(MainTextBox, AESCrypto.AES.ErrInfo, Brushes.Red);
+                //System.Collections.ListDictionaryInternal
+                //LoadText(MainTextBox, AESCrypto.AES.ErrInfo.Message, Brushes.Red);
+                MainTextBox.Document.Blocks.Clear();
+                ErrorInfo.Text = Properties.Resources.DecryptedFailed;
             }
         }
         private string GetText(RichTextBox richTextBox)
@@ -93,11 +100,10 @@ namespace Encrypt
             TextRange textRange = new TextRange(richTextBox.Document.ContentStart, richTextBox.Document.ContentEnd);
             return textRange.Text;
         }
-        private void LoadText(RichTextBox richTextBox, string txtContent, Brush Color)
+        private void LoadText(RichTextBox richTextBox, string txtContent)
         {
             richTextBox.Document.Blocks.Clear();
-            richTextBox.Document.Blocks.Add(new Paragraph(new Run(txtContent) {Foreground=Color }));
-            richTextBox.Document.Blocks.Add(new Paragraph(new Run() { Foreground = Brushes.Black }));
+            richTextBox.Document.Blocks.Add(new Paragraph(new Run(txtContent)));
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -148,6 +154,11 @@ namespace Encrypt
         {
             this.WindowState = WindowState.Normal;
             storylock = false;
+        }
+
+        private void MainTextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ErrorInfo.Text = "";
         }
     }
 }

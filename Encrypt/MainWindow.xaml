@@ -311,16 +311,19 @@
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
+        <TextBlock x:Name="ErrorInfo" TextWrapping="Wrap" Foreground="Red" Margin="10,40,10,82" Padding="5"/>
         <Rectangle Stroke="#7F000000"/>
         <Button x:Name="CloseButton" HorizontalAlignment="Left" Margin="175,10,0,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource CloseButtonStyle}" Click="CloseButton_Click"/>
         <Button x:Name="MinButton" HorizontalAlignment="Left" Margin="155,10,0,0" VerticalAlignment="Top" Width="15" Height="15" BorderBrush="{x:Null}" Foreground="{x:Null}" Background="{x:Null}" Style="{DynamicResource MinButtonStyle}" Click="MinButton_Click"/>
         <Label x:Name="TitleLabel" Content="Title" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="EncryptButton" Content="Encrypt" HorizontalAlignment="Left" Margin="10,260.76,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" Click="EncryptButton_Click" BorderBrush="#7F707070" Style="{DynamicResource ButtonStyle}"/>
-        <Button x:Name="DecryptButton" Content="Decrypt" HorizontalAlignment="Left" Margin="115,260.76,0,0" VerticalAlignment="Top" Width="75" Background="{x:Null}" Click="DecryptButton_Click" BorderBrush="#7F707070" Style="{DynamicResource ButtonStyle}"/>
-        <TextBox x:Name="KeyTextBox" HorizontalAlignment="Left" Height="23" Margin="45.777,225.24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144.223" Background="{x:Null}" Style="{DynamicResource TextBoxStyle}"/>
+        <Button x:Name="EncryptButton" Content="Encrypt" HorizontalAlignment="Left" Margin="10,260.76,0,0" VerticalAlignment="Top" Width="75" Background="White" Click="EncryptButton_Click" BorderBrush="#7F707070" Style="{DynamicResource ButtonStyle}"/>
+        <Button x:Name="DecryptButton" Content="Decrypt" HorizontalAlignment="Left" Margin="115,260.76,0,0" VerticalAlignment="Top" Width="75" Background="White" Click="DecryptButton_Click" BorderBrush="#7F707070" Style="{DynamicResource ButtonStyle}"/>
+        <TextBox x:Name="KeyTextBox" HorizontalAlignment="Left" Height="23" Margin="45.777,225.24,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="144.223" Background="White" Style="{DynamicResource TextBoxStyle}"/>
         <Label x:Name="KeyLabel" Content="Key" HorizontalAlignment="Left" Margin="10,223,0,0" VerticalAlignment="Top"/>
-        <RichTextBox x:Name="MainTextBox" HorizontalAlignment="Left" Height="177.76" Margin="10,40.24,0,0" VerticalAlignment="Top" Width="180" Block.LineHeight="6" Background="{x:Null}" Style="{DynamicResource RichTextBoxStyle}">
-            <FlowDocument/>
+        <RichTextBox x:Name="MainTextBox" HorizontalAlignment="Left" Height="177.76" Margin="10,40.24,0,0" VerticalAlignment="Top" Width="180" Block.LineHeight="6" Background="{x:Null}" Style="{DynamicResource RichTextBoxStyle}" GotFocus="MainTextBox_GotFocus">
+            <FlowDocument>
+                <Paragraph/>
+            </FlowDocument>
         </RichTextBox>
     </Grid>
 </Window>

@@ -79,11 +79,29 @@ namespace Encrypt.Properties {
         }
         
         /// <summary>
+        ///   查找类似 解密失败 的本地化字符串。
+        /// </summary>
+        internal static string DecryptedFailed {
+            get {
+                return ResourceManager.GetString("DecryptedFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   查找类似 加密 的本地化字符串。
         /// </summary>
         internal static string EncryptButtonText {
             get {
                 return ResourceManager.GetString("EncryptButtonText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 加密失败 的本地化字符串。
+        /// </summary>
+        internal static string EncryptedFailed {
+            get {
+                return ResourceManager.GetString("EncryptedFailed", resourceCulture);
             }
         }
         
